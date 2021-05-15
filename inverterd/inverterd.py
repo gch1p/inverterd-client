@@ -45,8 +45,10 @@ class Client:
         self._write(f'v {v}')
         return self._read()
 
-    def format(self, format):
-        self._write(f'format {format}')
+    def format(self, fmt):
+        if isinstance(fmt, Format):
+            fmt = fmt.value
+        self._write(f'format {fmt}')
         return self._read()
 
     def exec(self, command, arguments=()):
