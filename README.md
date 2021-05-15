@@ -12,10 +12,12 @@ pip install inverterd
 
 ## Usage example
 ```python
-from inverterd import Client
+from inverterd import Client, Format
 
 c = Client(8305, '127.0.0.1')
-c.format('json')
+c.connect()
+
+c.format(Format.JSON)
 print(c.exec('get-status'))
 print(c.exec('get-year-generated', (2021,)))
 ```

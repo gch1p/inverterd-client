@@ -11,8 +11,15 @@ class Format(Enum):
 
 class Client:
     def __init__(self, port=8305, host='127.0.0.1'):
+        self._host = host
+        self._port = port
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.connect((host, port))
+
+    def __del__(self):
+        self.sock.close()
+
+    def connect(self):
+        self.sock.connect((self._host, self._port))
 
     def _write(self, line):
         self.sock.sendall((line+'\r\n').encode())
