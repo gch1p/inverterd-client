@@ -5,6 +5,7 @@ from enum import Enum
 
 class Format(Enum):
     JSON = 'json'
+    SIMPLE_JSON = 'simple-json'
     TABLE = 'table'
     SIMPLE_TABLE = 'simple-table'
 
